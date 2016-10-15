@@ -97,20 +97,20 @@ public class Button extends Base
 
   }
   
-  boolean isMousePressed()
-  {
-    if (mousePressed && mouseX >= x && mouseY >= y && mouseX <=(x+labelWidth+5) && mouseY <=(y+labelHeight+5))
-    {
+  //boolean isMousePressed()
+  //{
+  //  if (mousePressed && mouseX >= x && mouseY >= y && mouseX <=(x+labelWidth+5) && mouseY <=(y+labelHeight+5))
+  //  {
       
-      return true;
+  //    return true;
       
-    } 
-    else
-    {
-      return false;
-    }
+  //  } 
+  //  else
+  //  {
+  //    return false;
+  //  }
     
-  }
+  //}
   
   boolean isMouseClicked()
   {
