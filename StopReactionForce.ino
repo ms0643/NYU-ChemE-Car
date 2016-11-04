@@ -53,6 +53,8 @@ void loop() {
     
       Serial.println("A");
     }
+    if (fsrReading < forceThres) {
+	    Serial.println(-1);
    
   }
 
