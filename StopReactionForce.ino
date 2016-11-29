@@ -53,9 +53,7 @@ void loop() {
     
       Serial.println("A");
     }
-    if (fsrReading < forceThres) {
-	    Serial.println(-1);
-   
+    
   }
 
   // Get the reading from the photosensor.
@@ -70,6 +68,10 @@ void loop() {
 	case 'c':
       digitalWrite(switchPin, LOW);
       Serial.println(sensorReading);
+      if (fsrReading < forceThres) 
+      {
+	    Serial.println(-60);
+      }
       break;
     
 	// Default to competition mode if not connected to a computer.
