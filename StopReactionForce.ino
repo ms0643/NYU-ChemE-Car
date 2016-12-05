@@ -23,7 +23,9 @@ int fsrPin = 1;
 // To store LIGHT threshold.
 int lightThres = 0;
 //To store FORCE threshold
-int forceThres = 0;
+int forceThres = 700;
+
+boolean start;
 
 void setup() 
 {
@@ -65,28 +67,33 @@ void loop() {
   switch (mode)
   {
     // For testing mode.
-	case 'c':
+  case 'c':
       digitalWrite(switchPin, LOW);
-      Serial.println(sensorReading);
-      if (fsrReading < forceThres) 
+      if (fsrReading >= forceThres)
       {
-	    Serial.println(-60);
+        Serial.println(-50);
+        start = true;
+      }
+      if (start = true)
+      {
+        Serial.println(sensorReading);
       }
       break;
+
+  // Default to competition mode if not connected to a computer.
+  default:
     
-	// Default to competition mode if not connected to a computer.
-	default:
-	  
-	  // Set the threshold if threshold is set.
+    // Set the threshold if threshold is set.
       if (lightThres == 0) 
       {
-        threshold = sensorReading - 30;
+        lightThres = sensorReading - 30;
       }
 
-	  // Turn on the circuit to the chemical battery or testing LED.
+    // Turn on the circuit to the chemical battery or testing LED.
+    if (fsrReading >= forceThres){
       digitalWrite(switchPin, LOW);
-      
-	  // If sensorReading is below or equal to the threshold, turn off the circuit.
+    }
+    // If sensorReading is below or equal to the threshold, turn off the circuit.
       if (sensorReading <= lightThres)
       {
         // Turn of the circuit to the chemical battery or testing LED.
@@ -96,7 +103,4 @@ void loop() {
   }
   
 }
-
-
-
 
